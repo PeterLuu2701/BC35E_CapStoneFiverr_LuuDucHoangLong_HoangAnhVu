@@ -35,7 +35,11 @@ const Header = (props: Props) => {
           </form>
           <ul className="navbar-nav d-flex my-2 my-lg-0">
             <li className="nav-item">
-              <NavLink className="nav-link active" to="" aria-current="page">
+              <NavLink
+                className="nav-link active"
+                to=""
+                aria-current="page"
+              >
                 Fiverr Business
               </NavLink>
             </li>

@@ -32,12 +32,12 @@ const MenuJobList = (props: Props) => {
 
   return (
     <Box
-      className="container-fluid"
+      className="container-fluid menu_job_list"
       borderTop={"1px solid #ccc"}
       borderBottom={"1px solid #ccc"}
     >
       <ul className=" nav justify-content-center  ">
-        {arrJobTypeMenu.map((job: any, index: number) => {
+        {arrJobTypeMenu.map((job: MenuJob, index: number) => {
           return (
             <li
               onMouseEnter={() => setActiveItem(index)}
