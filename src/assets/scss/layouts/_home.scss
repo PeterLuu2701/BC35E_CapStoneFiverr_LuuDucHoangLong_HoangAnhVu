@@ -32,12 +32,30 @@
 }
 
 .subcategory-carousel{
+    padding-bottom: 100px;
+    .home_slider_text{
+        padding-top: 100px;
+    }
     .slider-package{
         .mt-4{
             .slider-wrapper{
                 width: 100%;
+                .slick-prev:before {
+                    align-items: center;
+                        content: "←";
+                        color: #b5b6ba;
+                        font-size: 30px;
+                        font-weight: 700;
+                    }
+                
+                    .slick-next:before {
+                        content: "→";
+                        color: #b5b6ba;
+                        font-size: 30px;
+                    }
                 .slider-item{
                     width: 100%;
+                    padding: 5%;
                     img{
                         width: 100%;
                     }
