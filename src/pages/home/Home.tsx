@@ -2,11 +2,20 @@ import React from "react";
 import Carousel from "../../components/Carousel";
 import "../../../node_modules/slick-carousel/slick/slick.css";
 import "../../../node_modules/slick-carousel/slick/slick-theme.css";
-// import Slider from 'react-slick';
+import Slider from 'react-slick';
 
 type Props = {};
 
 const Home = (props: Props) => {
+
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 5,
+      slidesToScroll: 1
+    };
+
   return (
     <div>
       <Carousel />
@@ -47,531 +56,38 @@ const Home = (props: Props) => {
           <h2>Popular professional services</h2>
           <div className="slider-package">
             <div className="mt-4">
-              <div className="slick-slider slick-initialized" dir="ltr">
-                <div
-                  className="slick-arrow slick-prev"
-                  style={{
-                    display: "block",
-                    borderRadius: "50%",
-                    color: "rgb(255, 255, 255)",
-                  }}
-                />
-                <div className="slick-list">
-                  <div
-                    className="slick-track"
-                    style={{
-                      width: 6150,
-                      opacity: 1,
-                      transform: "translate3d(-1230px, 0px, 0px)",
-                    }}
-                  >
-                    <div
-                      data-index={-5}
-                      tabIndex={-1}
-                      className="slick-slide slick-cloned"
-                      aria-hidden="true"
-                      style={{ width: 246 }}
-                    >
-                      <div>
-                        <div
-                          tabIndex={-1}
-                          style={{ width: "100%", display: "inline-block" }}
-                        >
-                          <img
-                            className="w-100"
-                            src="./img/crs6.png"
-                            alt="..."
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-index={-4}
-                      tabIndex={-1}
-                      className="slick-slide slick-cloned"
-                      aria-hidden="true"
-                      style={{ width: 246 }}
-                    >
-                      <div>
-                        <div
-                          tabIndex={-1}
-                          style={{ width: "100%", display: "inline-block" }}
-                        >
-                          <img
-                            className="w-100"
-                            src="./img/crs7.png"
-                            alt="..."
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-index={-3}
-                      tabIndex={-1}
-                      className="slick-slide slick-cloned"
-                      aria-hidden="true"
-                      style={{ width: 246 }}
-                    >
-                      <div>
-                        <div
-                          tabIndex={-1}
-                          style={{ width: "100%", display: "inline-block" }}
-                        >
-                          <img
-                            className="w-100"
-                            src="./img/crs8.png"
-                            alt="..."
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-index={-2}
-                      tabIndex={-1}
-                      className="slick-slide slick-cloned"
-                      aria-hidden="true"
-                      style={{ width: 246 }}
-                    >
-                      <div>
-                        <div
-                          tabIndex={-1}
-                          style={{ width: "100%", display: "inline-block" }}
-                        >
-                          <img
-                            className="w-100"
-                            src="./img/crs9.png"
-                            alt="..."
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-index={-1}
-                      tabIndex={-1}
-                      className="slick-slide slick-cloned"
-                      aria-hidden="true"
-                      style={{ width: 246 }}
-                    >
-                      <div>
-                        <div
-                          tabIndex={-1}
-                          style={{ width: "100%", display: "inline-block" }}
-                        >
-                          <img
-                            className="w-100"
-                            src="./img/crs10.png"
-                            alt="..."
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-index={0}
-                      className="slick-slide slick-active slick-current"
-                      tabIndex={-1}
-                      aria-hidden="false"
-                      style={{ outline: "none", width: 246 }}
-                    >
-                      <div>
-                        <div
-                          tabIndex={-1}
-                          style={{ width: "100%", display: "inline-block" }}
-                        >
-                          <img
-                            className="w-100 "
-                            src="./img/crs1.png"
-                            alt="..."
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-index={1}
-                      className="slick-slide slick-active"
-                      tabIndex={-1}
-                      aria-hidden="false"
-                      style={{ outline: "none", width: 246 }}
-                    >
-                      <div>
-                        <div
-                          tabIndex={-1}
-                          style={{ width: "100%", display: "inline-block" }}
-                        >
-                          <img
-                            className="w-100"
-                            src="./img/crs2.png"
-                            alt="..."
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-index={2}
-                      className="slick-slide slick-active"
-                      tabIndex={-1}
-                      aria-hidden="false"
-                      style={{ outline: "none", width: 246 }}
-                    >
-                      <div>
-                        <div
-                          tabIndex={-1}
-                          style={{ width: "100%", display: "inline-block" }}
-                        >
-                          <img
-                            className="w-100"
-                            src="./img/crs3.png"
-                            alt="..."
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-index={3}
-                      className="slick-slide slick-active"
-                      tabIndex={-1}
-                      aria-hidden="false"
-                      style={{ outline: "none", width: 246 }}
-                    >
-                      <div>
-                        <div
-                          tabIndex={-1}
-                          style={{ width: "100%", display: "inline-block" }}
-                        >
-                          <img
-                            className="w-100"
-                            src="./img/crs4.png"
-                            alt="..."
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-index={4}
-                      className="slick-slide slick-active"
-                      tabIndex={-1}
-                      aria-hidden="false"
-                      style={{ outline: "none", width: 246 }}
-                    >
-                      <div>
-                        <div
-                          tabIndex={-1}
-                          style={{ width: "100%", display: "inline-block" }}
-                        >
-                          <img
-                            className="w-100"
-                            src="./img/crs5.png"
-                            alt="..."
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-index={5}
-                      className="slick-slide"
-                      tabIndex={-1}
-                      aria-hidden="true"
-                      style={{ outline: "none", width: 246 }}
-                    >
-                      <div>
-                        <div
-                          tabIndex={-1}
-                          style={{ width: "100%", display: "inline-block" }}
-                        >
-                          <img
-                            className="w-100"
-                            src="./img/crs6.png"
-                            alt="..."
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-index={6}
-                      className="slick-slide"
-                      tabIndex={-1}
-                      aria-hidden="true"
-                      style={{ outline: "none", width: 246 }}
-                    >
-                      <div>
-                        <div
-                          tabIndex={-1}
-                          style={{ width: "100%", display: "inline-block" }}
-                        >
-                          <img
-                            className="w-100"
-                            src="./img/crs7.png"
-                            alt="..."
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-index={7}
-                      className="slick-slide"
-                      tabIndex={-1}
-                      aria-hidden="true"
-                      style={{ outline: "none", width: 246 }}
-                    >
-                      <div>
-                        <div
-                          tabIndex={-1}
-                          style={{ width: "100%", display: "inline-block" }}
-                        >
-                          <img
-                            className="w-100"
-                            src="./img/crs8.png"
-                            alt="..."
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-index={8}
-                      className="slick-slide"
-                      tabIndex={-1}
-                      aria-hidden="true"
-                      style={{ outline: "none", width: 246 }}
-                    >
-                      <div>
-                        <div
-                          tabIndex={-1}
-                          style={{ width: "100%", display: "inline-block" }}
-                        >
-                          <img
-                            className="w-100"
-                            src="./img/crs9.png"
-                            alt="..."
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-index={9}
-                      className="slick-slide"
-                      tabIndex={-1}
-                      aria-hidden="true"
-                      style={{ outline: "none", width: 246 }}
-                    >
-                      <div>
-                        <div
-                          tabIndex={-1}
-                          style={{ width: "100%", display: "inline-block" }}
-                        >
-                          <img
-                            className="w-100"
-                            src="./img/crs10.png"
-                            alt="..."
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-index={10}
-                      tabIndex={-1}
-                      className="slick-slide slick-cloned"
-                      aria-hidden="true"
-                      style={{ width: 246 }}
-                    >
-                      <div>
-                        <div
-                          tabIndex={-1}
-                          style={{ width: "100%", display: "inline-block" }}
-                        >
-                          <img
-                            className="w-100 "
-                            src="./img/crs1.png"
-                            alt="..."
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-index={11}
-                      tabIndex={-1}
-                      className="slick-slide slick-cloned"
-                      aria-hidden="true"
-                      style={{ width: 246 }}
-                    >
-                      <div>
-                        <div
-                          tabIndex={-1}
-                          style={{ width: "100%", display: "inline-block" }}
-                        >
-                          <img
-                            className="w-100"
-                            src="./img/crs2.png"
-                            alt="..."
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-index={12}
-                      tabIndex={-1}
-                      className="slick-slide slick-cloned"
-                      aria-hidden="true"
-                      style={{ width: 246 }}
-                    >
-                      <div>
-                        <div
-                          tabIndex={-1}
-                          style={{ width: "100%", display: "inline-block" }}
-                        >
-                          <img
-                            className="w-100"
-                            src="./img/crs3.png"
-                            alt="..."
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-index={13}
-                      tabIndex={-1}
-                      className="slick-slide slick-cloned"
-                      aria-hidden="true"
-                      style={{ width: 246 }}
-                    >
-                      <div>
-                        <div
-                          tabIndex={-1}
-                          style={{ width: "100%", display: "inline-block" }}
-                        >
-                          <img
-                            className="w-100"
-                            src="./img/crs4.png"
-                            alt="..."
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-index={14}
-                      tabIndex={-1}
-                      className="slick-slide slick-cloned"
-                      aria-hidden="true"
-                      style={{ width: 246 }}
-                    >
-                      <div>
-                        <div
-                          tabIndex={-1}
-                          style={{ width: "100%", display: "inline-block" }}
-                        >
-                          <img
-                            className="w-100"
-                            src="./img/crs5.png"
-                            alt="..."
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-index={15}
-                      tabIndex={-1}
-                      className="slick-slide slick-cloned"
-                      aria-hidden="true"
-                      style={{ width: 246 }}
-                    >
-                      <div>
-                        <div
-                          tabIndex={-1}
-                          style={{ width: "100%", display: "inline-block" }}
-                        >
-                          <img
-                            className="w-100"
-                            src="./img/crs6.png"
-                            alt="..."
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-index={16}
-                      tabIndex={-1}
-                      className="slick-slide slick-cloned"
-                      aria-hidden="true"
-                      style={{ width: 246 }}
-                    >
-                      <div>
-                        <div
-                          tabIndex={-1}
-                          style={{ width: "100%", display: "inline-block" }}
-                        >
-                          <img
-                            className="w-100"
-                            src="./img/crs7.png"
-                            alt="..."
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-index={17}
-                      tabIndex={-1}
-                      className="slick-slide slick-cloned"
-                      aria-hidden="true"
-                      style={{ width: 246 }}
-                    >
-                      <div>
-                        <div
-                          tabIndex={-1}
-                          style={{ width: "100%", display: "inline-block" }}
-                        >
-                          <img
-                            className="w-100"
-                            src="./img/crs8.png"
-                            alt="..."
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-index={18}
-                      tabIndex={-1}
-                      className="slick-slide slick-cloned"
-                      aria-hidden="true"
-                      style={{ width: 246 }}
-                    >
-                      <div>
-                        <div
-                          tabIndex={-1}
-                          style={{ width: "100%", display: "inline-block" }}
-                        >
-                          <img
-                            className="w-100"
-                            src="./img/crs9.png"
-                            alt="..."
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-index={19}
-                      tabIndex={-1}
-                      className="slick-slide slick-cloned"
-                      aria-hidden="true"
-                      style={{ width: 246 }}
-                    >
-                      <div>
-                        <div
-                          tabIndex={-1}
-                          style={{ width: "100%", display: "inline-block" }}
-                        >
-                          <img
-                            className="w-100"
-                            src="./img/crs10.png"
-                            alt="..."
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              <Slider className="slider-wrapper" {...settings}>
+                <div className="slider-item">
+                  <img src="./img/crs1.pgn" alt="" />
                 </div>
-                <div
-                  className="slick-arrow slick-next"
-                  style={{ display: "block", borderRadius: "50%" }}
-                />
-              </div>
+                <div className="slider-item">
+                  <img src="./img/crs2.pgn" alt="" />
+                </div>
+                <div className="slider-item">
+                  <img src="./img/crs3.pgn" alt="" />
+                </div>
+                <div className="slider-item">
+                  <img src="./img/crs4.pgn" alt="" />
+                </div>
+                <div className="slider-item">
+                  <img src="./img/crs5.pgn" alt="" />
+                </div>
+                <div className="slider-item">
+                  <img src="./img/crs6.pgn" alt="" />
+                </div>
+                <div className="slider-item">
+                  <img src="./img/crs7.pgn" alt="" />
+                </div>
+                <div className="slider-item">
+                  <img src="./img/crs8.pgn" alt="" />
+                </div>
+                <div className="slider-item">
+                  <img src="./img/crs9.pgn" alt="" />
+                </div>
+                <div className="slider-item">
+                  <img src="./img/crs10.pgn" alt="" />
+                </div>
+              </Slider>
             </div>
           </div>
         </div>
