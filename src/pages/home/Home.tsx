@@ -3,18 +3,14 @@ import Carousel from "../../components/Carousel";
 import "../../../node_modules/slick-carousel/slick/slick.css";
 import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
+import HomeSlider from "../../components/HomeSlider";
+import SellingProposition from "../../components/SellingProposition";
 
 type Props = {};
 
 const Home = (props: Props) => {
 
-    const settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 5,
-      slidesToScroll: 1
-    };
+    
 
   return (
     <div>
@@ -53,44 +49,16 @@ const Home = (props: Props) => {
       </div>
       <section className="subcategory-carousel">
         <div className="container">
-          <h2>Popular professional services</h2>
+          <h2 className="home_slider_text">Popular professional services</h2>
           <div className="slider-package">
             <div className="mt-4">
-              <Slider className="slider-wrapper" {...settings}>
-                <div className="slider-item">
-                  <img src="./img/crs1.pgn" alt="" />
-                </div>
-                <div className="slider-item">
-                  <img src="./img/crs2.pgn" alt="" />
-                </div>
-                <div className="slider-item">
-                  <img src="./img/crs3.pgn" alt="" />
-                </div>
-                <div className="slider-item">
-                  <img src="./img/crs4.pgn" alt="" />
-                </div>
-                <div className="slider-item">
-                  <img src="./img/crs5.pgn" alt="" />
-                </div>
-                <div className="slider-item">
-                  <img src="./img/crs6.pgn" alt="" />
-                </div>
-                <div className="slider-item">
-                  <img src="./img/crs7.pgn" alt="" />
-                </div>
-                <div className="slider-item">
-                  <img src="./img/crs8.pgn" alt="" />
-                </div>
-                <div className="slider-item">
-                  <img src="./img/crs9.pgn" alt="" />
-                </div>
-                <div className="slider-item">
-                  <img src="./img/crs10.pgn" alt="" />
-                </div>
-              </Slider>
+              <HomeSlider/>
             </div>
           </div>
         </div>
+      </section>
+      <section className="selling_proposition">
+        <SellingProposition/>
       </section>
     </div>
   );

@@ -1,0 +1,40 @@
+.selling_proposition{
+    background-color: #f0fdf6;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    .selling_proposition_left{
+        width: 500px;
+
+        ul{
+            list-style-type: none;
+            padding-left: 0;
+            li{
+                padding: 10px 0;
+                span{
+                    font-weight: 700;
+                    align-items: center;
+                    .fa-circle-check{
+                        font-size: 20px;
+                        padding-right: 10px;
+                    }
+                }
+                h6{
+                    padding-top: 10px;
+                    font-weight: 100;
+                }
+            }
+        }
+    }
+
+    .selling_proposition_right{
+        text-align: center;
+        padding-left: 20px;
+        img{
+            margin-top: 20px;
+            margin-left: 90px;
+            :hover{
+                cursor: pointer;
+            }
+        }
+    }
+}
