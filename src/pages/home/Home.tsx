@@ -5,6 +5,7 @@ import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
 import HomeSlider from "../../components/HomeSlider";
 import SellingProposition from "../../components/SellingProposition";
+import Testimonial from "../../components/Testimonial";
 
 type Props = {};
 
@@ -52,13 +53,16 @@ const Home = (props: Props) => {
           <h2 className="home_slider_text">Popular professional services</h2>
           <div className="slider-package">
             <div className="mt-4">
-              <HomeSlider/>
+              <HomeSlider />
             </div>
           </div>
         </div>
       </section>
       <section className="selling_proposition">
-        <SellingProposition/>
+        <SellingProposition />
+      </section>
+      <section className="testimonial">
+        <Testimonial/>
       </section>
     </div>
   );
