@@ -1,0 +1,27 @@
+.testimonial {
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    .testimonial_btn {
+        float: left;
+    }
+
+    .testimonial_text {
+        align-items: center;
+        padding-top: 30px;
+
+        .testimonial-logo {
+            height: 30px;
+            border-left: 1px solid $gray-5;
+            margin-left: 20px;
+        }
+
+        .quote_modal {
+            padding-top: 20px;
+            i {
+                @include textStyle($fs-6, $fw-3, #003912);
+            }
+
+        }
+    }
+}
