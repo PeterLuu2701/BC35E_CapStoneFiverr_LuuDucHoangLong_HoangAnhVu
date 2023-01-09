@@ -6,6 +6,7 @@ import Slider from 'react-slick';
 import HomeSlider from "../../components/HomeSlider";
 import SellingProposition from "../../components/SellingProposition";
 import Testimonial from "../../components/Testimonial";
+import MainCategory from "../../components/MainCategory";
 
 type Props = {};
 
@@ -62,7 +63,13 @@ const Home = (props: Props) => {
         <SellingProposition />
       </section>
       <section className="testimonial">
-        <Testimonial/>
+        <Testimonial />
+      </section>
+      <section className="main_category">
+        <div className="container">
+          <h2>Explore the marketplace</h2>
+          <MainCategory />
+        </div>
       </section>
     </div>
   );
