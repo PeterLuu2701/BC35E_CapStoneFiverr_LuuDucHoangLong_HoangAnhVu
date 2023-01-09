@@ -12,9 +12,11 @@
 @import './components/footer';
 @import './components/sellingProposition';
 @import './components/testimonial';
+@import './components/mainCategory';
 
 // LAYOUTS
 @import './layouts/home';
+@import './layouts/register';
 
 // LIBRARY
 @import 'node_modules/react-modal-video/scss/modal-video.scss';
