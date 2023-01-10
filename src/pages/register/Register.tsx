@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { registerApi } from "../../redux/reducers/userReducer";
-import { RootState } from "../../redux/configStore";
+import { DispatchType, RootState } from "../../redux/configStore";
 
 export type UserRegister = {
   name: string;
@@ -23,7 +23,7 @@ const Register = (props: Props) => {
   });
 
   const { userRegister } = useSelector((state: RootState) => state.userReducer);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<DispatchType>();
 
   const frm = useFormik<UserRegister>({
     initialValues: {
@@ -93,7 +93,7 @@ const Register = (props: Props) => {
             Password
           </label>
           <input
-            type="text"
+            type={passwordType.password ? "password" : "text"}
             className="form-control"
             id="password"
             name="password"
@@ -121,10 +121,10 @@ const Register = (props: Props) => {
             Confirm Password
           </label>
           <input
-            type="text"
+            type={passwordType.passwordConfirm ? "password" : "text"}
             className="form-control"
-            id="passowrdConfirm"
-            name="passowrdConfirm"
+            id="passwordConfirm"
+            name="passwordConfirm"
             onChange={frm.handleChange}
             onBlur={frm.handleBlur}
           />
