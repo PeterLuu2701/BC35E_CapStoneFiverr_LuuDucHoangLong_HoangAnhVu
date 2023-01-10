@@ -1,3 +1,4 @@
+//rxslice
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { DispatchType } from "../configStore";
 import axios from "axios";
@@ -9,8 +10,10 @@ import {
   ACCESS_TOKEN,
   USER_LOGIN,
 } from "../../utils/config";
+import { UserRegister } from "../../pages/register/Register";
 
-export interface UserModel {
+//Register dùng chung với Profile
+export interface UserProfile {
   id: number;
   name: string;
   email: string;
@@ -23,22 +26,32 @@ export interface UserModel {
   certification: string[];
 }
 
-export interface UserType {
-  newUser: UserModel[];
+export interface UserLogin {
+  email: string,
+  accessToken: string
 }
 
-const initialState:UserType = {
-  newUser: [],
+type UserState = {
+  userRegister: UserProfile | null;
+  userLogin: UserLogin | null;
+  userProfile: UserProfile | null;
+};
+
+const initialState:UserState = {
+  userRegister: null,
+  userLogin: getStoreJson(USER_LOGIN),
+  userProfile: null
 };
 
 const userReducer = createSlice({
   name: "userReducer",
   initialState,
   reducers: {
-    registerAction: (
-        state:UserType, 
-        action: PayloadAction<UserModel[]>) => {
-      state.newUser = action.payload;
+    registerAction: (state: UserState, action: PayloadAction<UserProfile>) => {
+      state.userRegister = action.payload;
+    },
+    loginAction: (state: UserState, action: PayloadAction<UserLogin>) => {
+      state.userLogin = action.payload;
     },
   },
 });
@@ -48,7 +61,7 @@ export const { registerAction } =
 
 export default userReducer.reducer;
 
-export const registerApi = (newUserData:any) => {
+export const registerApi = (newUserData: UserRegister) => {
   return async (dispatch: DispatchType) => {
     try {
       const result = await http.post("/api/auth/signup", newUserData);
