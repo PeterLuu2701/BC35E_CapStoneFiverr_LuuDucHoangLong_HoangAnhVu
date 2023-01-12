@@ -1,5 +1,58 @@
-.register{
-   .register_form{
-    width: 500px;
+.register {
+   .register_form_wrapper {
+      .register_form {
+         width: 100%;
+         border: 1px solid rgba(0, 0, 0, .05);
+         border-radius: 20px;
+         box-shadow: 0 15px 16.83px 0.17px rgb(0 0 0 / 5%);
+         padding-top: 50px;
+         padding-bottom: 100px;
+         padding-left: 50px;
+         padding-right: 50px;
+         margin-top: 50px;
+         margin-bottom: 50px;
+
+         .password_input {
+            position: relative;
+
+            .password_hide {
+               position: absolute;
+               top: 40px;
+               right: 10px;
+            }
+         }
+
+         .register_button {
+            float: right;
+            width: 150px;
+            margin-top: 20px;
+            background-color: $fiverr-2;
+            color: $white-1;
+            font-weight: $fw-3;
+         }
+
+         .rForm__error{
+            color: $red-3;
+         }
+      }
    }
+
+   .register_slider {
+      margin-top: 50px;
+      margin-bottom: 50px;
+
+      .register_slider_item {
+         text-align: center;
+         padding-left: 20%;
+
+         img {
+            width: 400px;
+            height: 500px;
+            border: 1px solid rgba(0, 0, 0, .05);
+            border-radius: 20px;
+            box-shadow: 0 15px 16.83px 0.17px rgb(0 0 0 / 5%);
+         }
+      }
+   }
+
 }
