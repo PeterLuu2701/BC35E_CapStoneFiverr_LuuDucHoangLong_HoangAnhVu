@@ -1,9 +1,49 @@
-import React from "react";
+import React, {useState} from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { UserProfile } from "../redux/reducers/userReducer";
+import { eraseCookie, eraseStore, ACCESS_TOKEN, USER_LOGIN } from "../utils/config";
 
 type Props = {};
 
 const Header = (props: Props) => {
+
+  const { userLogin } = useSelector((state: any) => state.userReducer)
+
+  const dispatch = useDispatch();
+
+  const renderLogin = () => {
+    if (userLogin) {
+      return (
+        <>
+          <li className="nav-item">
+            <NavLink className="nav-link text-light" to="/profile">
+              Hello {userLogin.user.name}
+            </NavLink>
+          </li>
+          <span
+            className="mx-2 text-light d-flex align-items-center btn btn-danger"
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              if (localStorage.getItem("fblst_1026190204826662")) {
+                eraseStore("fblst_1026190204826662");
+              }
+              eraseStore(USER_LOGIN);
+              eraseCookie(ACCESS_TOKEN);
+              window.location.href = "/";
+            }}
+          >
+            Logout
+          </span>
+        </>
+      );
+    }
+    return (
+      <NavLink className="nav-link active" aria-current="page" to="/login">
+        Login
+      </NavLink>
+    );
+  };
   return (
     <nav className="navbar navbar-expand">
       <div className="container">
@@ -35,11 +75,7 @@ const Header = (props: Props) => {
           </form>
           <ul className="navbar-nav d-flex my-2 my-lg-0">
             <li className="nav-item">
-              <NavLink
-                className="nav-link active"
-                to=""
-                aria-current="page"
-              >
+              <NavLink className="nav-link active" to="" aria-current="page">
                 Fiverr Business
               </NavLink>
             </li>
@@ -63,16 +99,14 @@ const Header = (props: Props) => {
                 Become a Seller
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="login">
-                Sign in
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="register">
-                <button className="btn btn-outline-success">Join</button>
-              </NavLink>
-            </li>
+            {renderLogin()}
+            {!userLogin && (
+              <li className="nav-item">
+                <NavLink className="nav-link" to="register">
+                  <button className="btn btn-outline-success">Join</button>
+                </NavLink>
+              </li>
+            )}
           </ul>
         </div>
       </div>

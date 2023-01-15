@@ -12,6 +12,7 @@
             padding-bottom: 100px;
             padding-left: 50px;
             padding-right: 50px;
+            margin-bottom: 100px;
 
             .password_input {
                 position: relative;
@@ -30,6 +31,10 @@
                 background-color: $fiverr-2;
                 color: $white-1;
                 font-weight: $fw-3;
+            }
+
+            .rForm__error{
+                color: $red-3;
             }
         }
     }

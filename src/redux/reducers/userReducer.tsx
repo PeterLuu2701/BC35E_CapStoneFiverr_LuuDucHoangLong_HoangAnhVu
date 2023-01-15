@@ -56,8 +56,7 @@ const userReducer = createSlice({
   },
 });
 
-export const { registerAction } =
-  userReducer.actions;
+export const { registerAction, loginAction } = userReducer.actions;
 
 export default userReducer.reducer;
 
@@ -78,6 +77,24 @@ export const registerApi = (newUserData: UserRegister) => {
       if (error.response?.status === 400) {
         window.confirm("Email is already existed!");
       }
+    }
+  };
+};
+
+export const loginApi = (userLogin: UserLogin) => {
+  return async (dispatch: DispatchType) => {
+    try {
+      const result = await http.post("/api/auth/signin", userLogin);
+      const action = loginAction(result.data.content);
+      console.log(result);
+      dispatch(action);
+
+      setStoreJson(USER_LOGIN, result.data.content);
+      setCookie(ACCESS_TOKEN, result.data.content.accessToken, 3);
+
+      window.location.href = "/";
+    } catch (error) {
+      console.log(error);
     }
   };
 };

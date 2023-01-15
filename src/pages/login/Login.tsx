@@ -1,12 +1,53 @@
-import React from 'react'
+import { useFormik } from "formik";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import * as yup from "yup";
+import { DispatchType, RootState } from "../../redux/configStore";
+import { loginApi } from "../../redux/reducers/userReducer";
 
-type Props = {}
+export type UserLogin = {
+  email: string;
+  password: string;
+  accessToken: string;
+};
+
+type Props = {};
 
 const Login = (props: Props) => {
+  const [passwordType, setPasswordType] = useState({
+    password: true,
+  });
+
+  const dispatch = useDispatch<DispatchType>();
+  const { userRegister } = useSelector((state: RootState) => state.userReducer);
+
+  const frm = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+      accessToken: "",
+    },
+    validationSchema: yup.object().shape({
+      email: yup
+        .string()
+        .required("Email cannot be blank")
+        .email("Email is invalid"),
+      password: yup
+      .string()
+      .trim()
+      .required("Password cannot be blank!"),
+    }),
+    onSubmit: (values: UserLogin) => {
+      console.log(values);
+      const actionAsync = loginApi(values);
+      dispatch(actionAsync);
+    },
+  });
+
   return (
     <div className="container login">
       <div className="login_form_wrapper">
-        <form className="login_form">
+        <form className="login_form" onSubmit={frm.handleSubmit}>
           <div className="mb-3">
             <label htmlFor="exampleInputEmail1" className="form-label">
               Email
@@ -17,43 +58,43 @@ const Login = (props: Props) => {
               id="email"
               aria-describedby="emailHelp"
               name="email"
-              // onChange={frm.handleChange}
-              // onBlur={frm.handleBlur}
+              onChange={frm.handleChange}
+              onBlur={frm.handleBlur}
             />
-            {/* {frm.touched.email && frm.errors.email && (
+            {frm.touched.email && frm.errors.email && (
               <p className="rForm__error" id="emailError">
                 {frm.errors.email}
               </p>
-            )} */}
+            )}
           </div>
           <div className="mb-3 password_input">
             <label htmlFor="exampleInputPassword1" className="form-label">
               Password
             </label>
             <input
-              // type={passwordType.password ? "password" : "text"}
+              type={passwordType.password ? "password" : "text"}
               className="form-control"
               id="password"
               name="password"
-              // onChange={frm.handleChange}
-              // onBlur={frm.handleBlur}
+              onChange={frm.handleChange}
+              onBlur={frm.handleBlur}
             />
             <span
               className="password_hide"
-              // onClick={() =>
-              //   setPasswordType({
-              //     ...passwordType,
-              //     password: !passwordType.password,
-              //   })
-              // }
+              onClick={() =>
+                setPasswordType({
+                  ...passwordType,
+                  password: !passwordType.password,
+                })
+              }
             >
               <i className="fa-solid fa-eye" />
             </span>
-            {/* {frm.touched.password && frm.errors.password && (
+            {frm.touched.password && frm.errors.password && (
               <p className="rForm__error" id="passwordError">
                 {frm.errors.password}
               </p>
-            )}  */}
+            )}
           </div>
           <button type="submit" className="btn login_button">
             Login
@@ -62,6 +103,6 @@ const Login = (props: Props) => {
       </div>
     </div>
   );
-}
+};
 
-export default Login
+export default Login;
