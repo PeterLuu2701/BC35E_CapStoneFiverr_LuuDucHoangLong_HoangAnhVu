@@ -26,8 +26,12 @@ export interface JobTypeMenu {
   arrJobTypeMenu: MenuJob[];
 }
 
-const initialState: JobTypeMenu = {
-  arrJobTypeMenu: [],
+export interface CategoryJob {
+  arrCategoryJob: DsNhomChiTietLoai[];
+}
+
+const initialState: any = {
+  arrJobTypeMenu: []
 };
 
 const jobReducer = createSlice({
@@ -40,10 +44,16 @@ const jobReducer = createSlice({
     ) => {
       state.arrJobTypeMenu = action.payload;
     },
+    getCategoryAction: (
+      state: CategoryJob,
+      action: PayloadAction<DsNhomChiTietLoai[]>
+    ) => {
+      state.arrCategoryJob = action.payload;
+    },
   },
 });
 
-export const { getMenuJobAction } = jobReducer.actions;
+export const { getMenuJobAction, getCategoryAction } = jobReducer.actions;
 
 export default jobReducer.reducer;
 
@@ -58,3 +68,12 @@ export const getMenuJobApi = () => {
     dispatch(action);
   };
 };
+
+export const getCateogryApi = () => {
+  return async (dispatch: DispatchType) => {
+    const result = await http.get(
+      `/api/cong-viec/lay-chi-tiet-loai-cong-viec/{MaLoaiCongViec}`);
+      const action: PayloadAction<DsNhomChiTietLoai[]> = getCategoryAction(result.data.content);
+      dispatch(action);
+  }
+}
