@@ -13,7 +13,7 @@ const MenuJobTypeList = (props: Props) => {
 
   return (
     <Box position="relative" className="menu_job_type_list">
-      <NavLink to={`/category/${job.id}`}>
+      <NavLink to={`/category/${job?.id}`}>
         <Button style={{ color: "#74767e" }}>{job.tenLoaiCongViec}</Button>
       </NavLink>
 
