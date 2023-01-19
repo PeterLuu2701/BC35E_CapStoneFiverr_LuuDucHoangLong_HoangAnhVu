@@ -3,6 +3,7 @@ import { DsChiTietLoai, DsNhomChiTietLoai, MenuJob } from "../redux/reducers/job
 import { useState, useEffect } from "react";
 import { Box, Grid } from "@mui/material";
 import { NavLink } from "react-router-dom";
+
 type Props = {
   job: MenuJob;
   show: boolean;
