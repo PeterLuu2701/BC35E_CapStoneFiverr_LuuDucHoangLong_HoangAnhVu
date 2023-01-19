@@ -1,16 +1,28 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { useSelector } from "react-redux";
-import { DsNhomChiTietLoai, MenuJob } from "../../redux/reducers/jobReducer";
+import { DsNhomChiTietLoai, MenuJob, getCategoryApi } from "../../redux/reducers/jobReducer";
+import { useDispatch } from "react-redux";
+import { RootState } from "../../redux/configStore";
+
 
 type Props = {
-  job: MenuJob;
-  show: boolean;
 };
 
 const JobCategory = (props: Props) => {
 
-  const { job, show } = props;
+    const { arrCategoryJob } = useSelector(
+      (state: RootState) => state.jobReducer
+    );
+    console.log(arrCategoryJob);
+    const dispatch = useDispatch();
 
+    useEffect(() => {
+      const actionAsync: any = getCategoryApi();
+      dispatch(actionAsync);
+    }, []);
+
+    
+    
   return (
     <div className="category">
       <div className="category_banner">
@@ -19,20 +31,22 @@ const JobCategory = (props: Props) => {
       <div className="container category_card">
         <div className="row">
           <div className="col-4">
-            {job.dsNhomChiTietLoai.map((category: DsNhomChiTietLoai, i: number) => {
-              return (
-                <div className="card">
-                  <img
-                    className="card-img-top"
-                    src={category.hinhAnh}
-                    alt="Title"
-                  />
-                  <div className="card-body">
-                    <h4 className="card-title">{category.tenNhom}</h4>
+            {arrCategoryJob?.map(
+              (category: DsNhomChiTietLoai, i: number) => {
+                return (
+                  <div className="card">
+                    <img
+                      className="card-img-top"
+                      src={category.hinhAnh}
+                      alt="Title"
+                    />
+                    <div className="card-body">
+                      <h4 className="card-title">{category.tenNhom}</h4>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              }
+            )}
           </div>
         </div>
       </div>

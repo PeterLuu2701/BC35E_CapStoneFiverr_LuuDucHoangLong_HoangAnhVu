@@ -30,8 +30,14 @@ export interface CategoryJob {
   arrCategoryJob: DsNhomChiTietLoai[];
 }
 
-const initialState: any = {
-  arrJobTypeMenu: []
+export interface Redux {
+  arrJobTypeMenu: MenuJob[];
+  arrCategoryJob: DsNhomChiTietLoai[];
+}
+
+const initialState: Redux = {
+  arrJobTypeMenu: [],
+  arrCategoryJob: [],
 };
 
 const jobReducer = createSlice({
@@ -69,7 +75,7 @@ export const getMenuJobApi = () => {
   };
 };
 
-export const getCateogryApi = () => {
+export const getCategoryApi = () => {
   return async (dispatch: DispatchType) => {
     const result = await http.get(
       `/api/cong-viec/lay-chi-tiet-loai-cong-viec/{MaLoaiCongViec}`);
