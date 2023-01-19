@@ -78,8 +78,11 @@ export const getMenuJobApi = () => {
 export const getCategoryApi = () => {
   return async (dispatch: DispatchType) => {
     const result = await http.get(
-      `/api/cong-viec/lay-chi-tiet-loai-cong-viec/{MaLoaiCongViec}`);
-      const action: PayloadAction<DsNhomChiTietLoai[]> = getCategoryAction(result.data.content);
-      dispatch(action);
-  }
-}
+      `/api/cong-viec/lay-chi-tiet-loai-cong-viec/{MaLoaiCongViec}`
+    );
+    const action: PayloadAction<DsNhomChiTietLoai[]> = getCategoryAction(
+      result.data.content
+    );
+    dispatch(action);
+  };
+};
