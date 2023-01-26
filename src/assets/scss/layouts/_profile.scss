@@ -1,0 +1,65 @@
+.profile {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: $gray-1;
+
+    .basic_profile {
+        text-align: center;
+        width: 100%;
+        background-color: $white-1;
+        padding: 20px;
+
+        img {
+            border-radius: 50%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .basic_profile_country {
+            width: 100%;
+            display: inline-block;
+        }
+
+        .basic_profile_member {
+            width: 100%;
+            display: inline-block;
+        }
+
+        .basic_profile_left {
+            float: left;
+        }
+
+        .basic_profile_right {
+            float: right;
+        }
+    }
+
+    .info_detail{
+        width: 100%;
+        background-color: $white-1;
+        padding: 20px;
+        margin-top: 20px;
+
+        .info_detail_description{
+            width: 100%;
+            display: inline-block;
+            margin-bottom: 20px;
+            .basic_profile_left {
+                    float: left;
+                }
+            
+                .basic_profile_right {
+                    float: right;
+                }
+            hr{
+                margin-top: 50px;
+            }
+        }
+
+        .info_detail_languages, .info_detail_accounts, .info_detail_skills, .info_detail_education, .info_detail_certification{
+            @extend .info_detail_description
+        }
+
+
+    }
+}
