@@ -53,10 +53,13 @@ const userReducer = createSlice({
     loginAction: (state: UserState, action: PayloadAction<UserLogin>) => {
       state.userLogin = action.payload;
     },
+    getProfileAction: (state: UserState, action: PayloadAction<UserProfile>) => {
+      state.userProfile = action.payload;
+    },
   },
 });
 
-export const { registerAction, loginAction } = userReducer.actions;
+export const { registerAction, loginAction, getProfileAction } = userReducer.actions;
 
 export default userReducer.reducer;
 
@@ -98,3 +101,17 @@ export const loginApi = (userLogin: UserLogin) => {
     }
   };
 };
+
+export const getProfileApi = () => {
+  return async (dispatch: DispatchType) => {
+    try {
+      const result = await http.get("/api/users");
+      const action = getProfileAction(result.data.content);
+      console.log(result);
+      
+      dispatch(action);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
