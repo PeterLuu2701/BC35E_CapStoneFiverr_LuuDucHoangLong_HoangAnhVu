@@ -8,17 +8,20 @@ type Props = {};
 
 const Header = (props: Props) => {
 
-  const { userLogin } = useSelector((state: any) => state.userReducer)
+  const userProfile  = useSelector((state: any) => state.userReducer.userProfile);
 
   const dispatch = useDispatch();
 
   const renderLogin = () => {
-    if (userLogin) {
+    if (userProfile) {
       return (
         <>
           <li className="nav-item">
-            <NavLink className="nav-link text-light" to="/profile">
-              Hello {userLogin.user.name}
+            <NavLink
+              className="nav-link text-light"
+              to={`/profile/${userProfile.id}`}
+            >
+              Hello {userProfile.name}
             </NavLink>
           </li>
           <span
@@ -100,7 +103,7 @@ const Header = (props: Props) => {
               </NavLink>
             </li>
             {renderLogin()}
-            {!userLogin && (
+            {!userProfile && (
               <li className="nav-item">
                 <NavLink className="nav-link" to="register">
                   <button className="btn btn-outline-success">Join</button>

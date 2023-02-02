@@ -1,39 +1,59 @@
-import React, { useEffect } from "react";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DispatchType, RootState } from "../../redux/configStore";
-import { getProfileApi, UserProfile } from "../../redux/reducers/userReducer";
-import { useFormik } from "formik";
-import { UserLogin } from "../login/Login";
+import {
+  getProfileApi,
+  updateProfileApi,
+  UserProfile,
+} from "../../redux/reducers/userReducer";
 
 type Props = {};
 
 const Profile = (props: Props) => {
-  const { userLogin } = useSelector((state: RootState) => state.userReducer);
+  const { userProfile } = useSelector((state: RootState) => state.userReducer);
   const dispatch = useDispatch<DispatchType>();
-  console.log(userLogin);
 
   useEffect(() => {
-    dispatch(getProfileApi());
+    dispatch(getProfileApi(userProfile?.id!));
   }, []);
 
-  const frm = useFormik<UserLogin>({
+  const frm = useFormik<UserProfile>({
     initialValues: {
-      accessToken: userLogin?.accessToken || "",
-      email: userLogin?.email || "",
-      name: userLogin?. || "",
-      id: userLogin?.id || "",
-      password: userLogin?.password || "",
-      phone: userLogin?.phone || "",
-      birthday: userLogin?.birthday || "",
-      gender: userLogin?.gender || "true",
-      role: userLogin?.role || "",
-      skill: userLogin?.skill || "",
-      certification: userLogin?.certification || "",
+      email: userProfile?.email!,
+      name: userProfile?.name!,
+      id: userProfile?.id!,
+      password: userProfile?.password!,
+      phone: userProfile?.phone!,
+      birthday: userProfile?.birthday!,
+      gender: userProfile?.gender!,
+      role: userProfile?.role!,
+      skill: userProfile?.skill!,
+      certification: userProfile?.certification!,
     },
     enableReinitialize: true,
-    onSubmit: (values) => {
-      console.log(values);
-      dispatch(getProfileApi());
+    validationSchema: yup.object().shape({
+      name: yup.string().trim().required("Name cannot be blank!"),
+      phone: yup
+        .string()
+        .trim()
+        .required("Phone number cannot be blank!")
+        .matches(
+          /((^(\+84|84|0|0084){1})(3|5|7|8|9))+([0-9]{8})$/,
+          "Phone number is not valid!"
+        ),
+      password: yup
+        .string()
+        .trim()
+        .required("Password cannot be blank!")
+        .min(6, "Password must be between 6 - 10 characters!")
+        .max(10, "Password must be between 6 - 10 characters!"),
+    }),
+    onSubmit: (values: UserProfile) => {
+      console.log("update:", values);
+      dispatch(updateProfileApi(userProfile?.id!));
+      dispatch(getProfileApi(userProfile?.id!));
     },
   });
 
@@ -43,7 +63,7 @@ const Profile = (props: Props) => {
         <div className="col-4">
           <div className="basic_profile">
             <img src="https://i.pravatar.cc/300" alt="" />
-            <h3>{userLogin?.user.name}</h3>
+            <h3>{userProfile?.name}</h3>
             <button
               type="button"
               className="btn btn-primary btn-lg"
@@ -135,17 +155,23 @@ const Profile = (props: Props) => {
                   aria-label="Close"
                 />
               </div>
-              <form>
+              <form onSubmit={frm.handleSubmit}>
                 <div className="modal-body">
                   <label className="form-label">Name</label>
                   <input
                     type="text"
                     className="form-control"
                     id="name"
-                    // aria-describedby="emailHelp"
                     name="name"
                     value={frm.values.name}
+                    onChange={frm.handleChange}
+                    onBlur={frm.handleBlur}
                   />
+                  {frm.touched.name && frm.errors.name && (
+                    <p className="f-error" id="namelError">
+                      {frm.errors.name}
+                    </p>
+                  )}
                   <label className="form-label">Email</label>
                   <input
                     type="email"
@@ -153,27 +179,46 @@ const Profile = (props: Props) => {
                     id="email"
                     // aria-describedby="emailHelp"
                     name="email"
-                    disabled
+                    // disabled
                     value={frm.values.email}
+                    onChange={frm.handleChange}
+                    onBlur={frm.handleBlur}
                   />
+                  {frm.touched.email && frm.errors.email && (
+                    <p className="f-error" id="emailError">
+                      {frm.errors.email}
+                    </p>
+                  )}
                   <label className="form-label">Password</label>
                   <input
                     type="text"
                     className="form-control"
                     id="password"
-                    // aria-describedby="emailHelp"
                     name="password"
                     value={frm.values.password}
+                    onChange={frm.handleChange}
+                    onBlur={frm.handleBlur}
                   />
+                  {frm.touched.password && frm.errors.password && (
+                    <p className="f-error" id="passwordError">
+                      {frm.errors.password}
+                    </p>
+                  )}
                   <label className="form-label">Phone Number</label>
                   <input
                     type="number"
                     className="form-control"
                     id="phone"
-                    // aria-describedby="emailHelp"
                     name="phone"
                     value={frm.values.phone}
+                    onChange={frm.handleChange}
+                    onBlur={frm.handleBlur}
                   />
+                  {frm.touched.phone && frm.errors.phone && (
+                    <p className="f-error" id="phoneError">
+                      {frm.errors.phone}
+                    </p>
+                  )}
                 </div>
                 <div className="modal-footer">
                   <button
@@ -183,7 +228,7 @@ const Profile = (props: Props) => {
                   >
                     Close
                   </button>
-                  <button type="button" className="btn btn-primary">
+                  <button type="submit" className="btn btn-primary">
                     Save
                   </button>
                 </div>
