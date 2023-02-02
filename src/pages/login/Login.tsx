@@ -1,9 +1,11 @@
 import { useFormik } from "formik";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { DispatchType, RootState } from "../../redux/configStore";
 import { loginApi } from "../../redux/reducers/userReducer";
+import { http } from "../../utils/config";
 
 export type UserLogin = {
   email: string;
@@ -17,7 +19,8 @@ const Login = (props: Props) => {
   const [passwordType, setPasswordType] = useState({
     password: true,
   });
-
+  const { userProfile } = useSelector((state: RootState) => state.userReducer);
+  const navigate = useNavigate();
   const dispatch = useDispatch<DispatchType>();
   const { userRegister } = useSelector((state: RootState) => state.userReducer);
 
@@ -26,23 +29,36 @@ const Login = (props: Props) => {
       email: "",
       password: "",
       accessToken: "",
+      //     user: {
+      //         id: 0,
+      // name: '',
+      // email: '',
+      // password: '',
+      // phone: '',
+      // birthday: '',
+      // gender: true,
+      // role: '',
+      // skill: [],
+      // certification: [],
+      //     }
     },
     validationSchema: yup.object().shape({
       email: yup
         .string()
         .required("Email cannot be blank")
         .email("Email is invalid"),
-      password: yup
-      .string()
-      .trim()
-      .required("Password cannot be blank!"),
+      password: yup.string().trim().required("Password cannot be blank!"),
     }),
     onSubmit: (values: UserLogin) => {
-      console.log(values);
+      console.log('password' ,values);
       const actionAsync = loginApi(values);
       dispatch(actionAsync);
     },
   });
+
+  useEffect(() => {
+    if (userProfile) navigate("/");
+  }, [userProfile]);
 
   return (
     <div className="container login">
