@@ -129,16 +129,16 @@ export const getProfileApi = (id: number) => {
   };
 };
 
-export const updateProfileApi = (id: number) => {
+export const updateProfileApi = (id: number, updatedData: UserProfile) => {
   return async (dispatch: DispatchType) => {
     try {
-      const result = await http.put(`/api/users/${id}`);
+      const result = await http.put(`/api/users/${id}`, updatedData);
       const action = updateProfileAction(result.data.content);
       console.log("update: ", result);
 
-      dispatch(action);      
+      dispatch(action);
     } catch (error) {
       console.log(error);
     }
-  }
-}
+  };
+};

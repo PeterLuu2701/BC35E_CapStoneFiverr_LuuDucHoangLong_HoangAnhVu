@@ -52,7 +52,7 @@ const Profile = (props: Props) => {
     }),
     onSubmit: (values: UserProfile) => {
       console.log("update:", values);
-      dispatch(updateProfileApi(userProfile?.id!));
+      dispatch(updateProfileApi(userProfile?.id!, values));
       dispatch(getProfileApi(userProfile?.id!));
     },
   });
