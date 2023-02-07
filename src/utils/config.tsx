@@ -49,9 +49,11 @@ export const config = {
   },
   ACCESS_TOKEN: "accessToken",
   USER_LOGIN: "userLogin",
+  ID_LOGIN:"id_login",
+  ROLE_LOGIN:"role_login"
 };
 
-export const { setCookie, getCookie, eraseCookie, getStore, setStore, eraseStore, setStoreJson, getStoreJson, ACCESS_TOKEN, USER_LOGIN } = config;
+export const { setCookie, getCookie, eraseCookie, getStore, setStore, eraseStore, setStoreJson, getStoreJson, ACCESS_TOKEN, USER_LOGIN, ID_LOGIN, ROLE_LOGIN } = config;
 
 const DOMAIN = "https://fiverrnew.cybersoft.edu.vn";
 const TOKEN_CYBERSOFT = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y2FtcCAzNUUiLCJIZXRIYW5TdHJpbmciOiIzMS8wNS8yMDIzIiwiSGV0SGFuVGltZSI6IjE2ODU0OTEyMDAwMDAiLCJuYmYiOjE2NTczODYwMDAsImV4cCI6MTY4NTYzODgwMH0.LWlPoCoXPHgp2U6FijTqXvKFt7ENvY9Tyn9ux-bVlXo';

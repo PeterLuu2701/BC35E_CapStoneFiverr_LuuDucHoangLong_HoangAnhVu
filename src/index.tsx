@@ -20,7 +20,7 @@ import Register from './pages/register/Register';
 import Detail from './pages/detail/Detail';
 import JobCategory from './pages/jobCategory/JobCategory';
 import JobList from './pages/jobList/JobList';
-import Admin from './pages/admin/AdminPage';
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -46,7 +46,7 @@ root.render(
             <Route path=":maLoaiCongviec" element={<JobCategory />} />
           </Route>
           <Route path="list" element={<JobList />} />
-          <Route path="admin" element={<Admin />} />
+         
           <Route path="*" element={<Navigate to="" />} />
         </Route>
       </Routes>
