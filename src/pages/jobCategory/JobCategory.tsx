@@ -31,22 +31,16 @@ const JobCategory = (props: Props) => {
       <div className="container category_card">
         <div className="row">
           <div className="col-4">
-            {arrCategoryJob?.map(
-              (category: DsNhomChiTietLoai, i: number) => {
-                return (
                   <div className="card">
                     <img
                       className="card-img-top"
-                      src={category.hinhAnh}
+                      src={arrCategoryJob?.hinhAnh}
                       alt="Title"
                     />
                     <div className="card-body">
-                      <h4 className="card-title">{category.tenNhom}</h4>
+                      <h4 className="card-title">{arrCategoryJob?.tenNhom}</h4>
                     </div>
                   </div>
-                );
-              }
-            )}
           </div>
         </div>
       </div>

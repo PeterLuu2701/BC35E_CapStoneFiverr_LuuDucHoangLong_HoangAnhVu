@@ -27,17 +27,17 @@ export interface JobTypeMenu {
 }
 
 export interface CategoryJob {
-  arrCategoryJob: DsNhomChiTietLoai[];
+  arrCategoryJob: DsNhomChiTietLoai | null ;
 }
 
 export interface Redux {
   arrJobTypeMenu: MenuJob[];
-  arrCategoryJob: DsNhomChiTietLoai[];
+  arrCategoryJob: DsNhomChiTietLoai | null;
 }
 
 const initialState: Redux = {
   arrJobTypeMenu: [],
-  arrCategoryJob: [],
+  arrCategoryJob: null,
 };
 
 const jobReducer = createSlice({
@@ -52,7 +52,7 @@ const jobReducer = createSlice({
     },
     getCategoryAction: (
       state: CategoryJob,
-      action: PayloadAction<DsNhomChiTietLoai[]>
+      action: PayloadAction<DsNhomChiTietLoai>
     ) => {
       state.arrCategoryJob = action.payload;
     },
