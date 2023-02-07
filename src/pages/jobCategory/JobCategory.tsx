@@ -17,7 +17,7 @@ const JobCategory = (props: Props) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-      const actionAsync: any = getCategoryApi();
+      const actionAsync: any = getCategoryApi(arrCategoryJob?.maLoaiCongviec!);
       dispatch(actionAsync);
     }, []);
 
