@@ -1,8 +1,13 @@
 import React, {useEffect, useState} from "react";
 import { useSelector } from "react-redux";
-import { DsNhomChiTietLoai, MenuJob, getCategoryApi } from "../../redux/reducers/jobReducer";
+import {
+  DsNhomChiTietLoai,
+  MenuJob,
+  getCategoryApi,
+} from "../../redux/reducers/jobReducer";
 import { useDispatch } from "react-redux";
 import { RootState } from "../../redux/configStore";
+
 
 
 type Props = {
@@ -13,6 +18,7 @@ const JobCategory = (props: Props) => {
     const { arrCategoryJob } = useSelector(
       (state: RootState) => state.jobReducer
     );
+
     console.log(arrCategoryJob);
     const dispatch = useDispatch();
 
@@ -26,7 +32,7 @@ const JobCategory = (props: Props) => {
   return (
     <div className="category">
       <div className="category_banner">
-        <img src="./img/category_banner.jpg" alt="" />
+        <img src="./img/category_banner.jpg" alt="banner" />
       </div>
       <div className="container category_card">
         <div className="row">

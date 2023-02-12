@@ -1,5 +1,5 @@
 import Button from "@mui/material/Button";
-import { DsChiTietLoai, DsNhomChiTietLoai, MenuJob } from "../redux/reducers/jobReducer";
+import { DsChiTietLoai, DsNhomChiTietLoai, getCategoryApi, MenuJob } from "../redux/reducers/jobReducer";
 import { useState, useEffect } from "react";
 import { Box, Grid } from "@mui/material";
 import { NavLink } from "react-router-dom";
