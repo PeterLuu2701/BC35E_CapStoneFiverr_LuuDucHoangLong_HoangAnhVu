@@ -20,6 +20,11 @@ import Register from './pages/register/Register';
 import Detail from './pages/detail/Detail';
 import JobCategory from './pages/jobCategory/JobCategory';
 import JobList from './pages/jobList/JobList';
+import ResponsiveItem from './HOC/ResponsiveItem';
+import AdminTemplate from './templates/Admin/AdminTemplate';
+import User from './pages/AdminPages/User/User';
+import Service from './pages/AdminPages/Service/Service';
+
 
 
 const root = ReactDOM.createRoot(
@@ -27,7 +32,7 @@ const root = ReactDOM.createRoot(
 );
 
 // Chuyển hướng trang ở file không phải component
-export const history:any = createBrowserHistory();
+export const history: any = createBrowserHistory();
 
 root.render(
   <Provider store={store}>
@@ -46,10 +51,20 @@ root.render(
             <Route path=":maLoaiCongviec" element={<JobCategory />} />
           </Route>
           <Route path="list" element={<JobList />} />
-         
+
           <Route path="*" element={<Navigate to="" />} />
+
         </Route>
+        <Route path='/admin' element={<ResponsiveItem Component={AdminTemplate} />}>
+          <Route index element={<ResponsiveItem Component={User} />} />
+          <Route path='/admin/user' element={<ResponsiveItem Component={User} />} />
+          <Route path='/admin/service' element={<ResponsiveItem Component={Service} />} />
+        </Route>
+
       </Routes>
+
+
+
     </HistoryRouter>
   </Provider>
 );

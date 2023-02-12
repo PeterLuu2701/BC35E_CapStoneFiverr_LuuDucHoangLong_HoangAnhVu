@@ -1,77 +1,136 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { http } from '../../utils/config';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { http } from "../../utils/config";
 import { DispatchType } from '../configStore';
-import { ThongTinNguoiDung } from '../model/AuthModel';
-import { CongViecViewModel } from '../model/JobModel';
+import { history } from '../../index';
 
-const initialState: any = {
-    allUser: [],
-    allServiceHire: [],
-    allCongViec: [],
-    allJobType: [],
-    user: {
-        id: "",
-        email: "",
-        name: "",
-        phone: "",
-        birthday: "",
-        role: "",
-        certification: [],
-        skill: [],
-        gender: false,
-    },
+export interface Admin{
+    
+    id:               string;
+    name:             string;
+    email:            string;
+    phone:            string;
+    password:         string;
+    birthday:         string;
+    role:             string;
+    certification:    string;
+    gender:          boolean;
+    skill:            string;
+
+}
+export interface EditUser {
+  id: string;
+  value: Admin;
+}
+
+const initialState:any =  {
+    arrAdmin:[],
+    editUser:{}
 }
 
 const adminReducer = createSlice({
-    name: "adminReducer",
-    initialState,
-    reducers: {
-        getAllUser: (state, action) => {
-            state.allUser = action.payload
-        },
-        getAllCongViecAction: (
-            state,
-            action: PayloadAction<CongViecViewModel[]>
-          ) => {
-            state.allCongViec = action.payload;
-          },
-          getAllServiceHire: (state, action) => {
-            state.allServiceHire = action.payload;
-          },
-          getAllJobType: (state, action) => {
-            state.allJobType = action.payload;
-          },
-          getUserAction: (state, action) => {
-            state.user = action.payload;
-          },
-          getUserSearch: (state, aciton) => {
-            state.allUser = aciton.payload;
-          },
-    }
+  name: 'adminReducer',
+  initialState,
+  reducers: {
+    getAdminAction:(state,action:PayloadAction<Admin[]>)=>{
+        state.arrAdmin=action.payload;
+    },
+    getUpdateAction:(state,action:PayloadAction<Admin>)=>{
+        state.editUser=action.payload;
+    },
+    searchUserAction:(state,action:PayloadAction<Admin[]>)=>{
+        state.arrAdmin=action.payload;
+  }
+  }
 });
 
-export const { 
-    getAllUser,
-    getAllCongViecAction,
-    getAllServiceHire,
-    getAllJobType,
-    getUserAction,
-    getUserSearch
-} = adminReducer.actions
+export const {getAdminAction,getUpdateAction,searchUserAction} = adminReducer.actions
 
 export default adminReducer.reducer
 
-// ---------action async-------------
 
-export const getUserApi = () => {
-    return async (dispatch: DispatchType) => {
-      try {
-        const result = await http.get(`/users`);
-        let allUser: ThongTinNguoiDung = result.data.content;
-        dispatch(getAllUser(allUser));
-      } catch (err) {
-        console.log(err);
-      }
-    };
+/* ------------ action api -------------------- */
+export const getadmintApi = () => {
+  return async (dispatch1: DispatchType) => {
+    // console.log(getState())
+    try {
+      const result = await http.get('/users');
+      let arradmin:Admin[]=result.data.content;
+      const action = getAdminAction(arradmin);
+      
+      dispatch1(action);
+     
+    } catch (err) {
+      console.log({ err });
+    }
   };
+};
 
+export const deleteUseApi=(id: string)=>{
+return async(dispatch:DispatchType)=>{
+  try{
+    const result=await http.delete(`/users?id=${id}`);
+    console.log(result.data.message)
+    dispatch(getadmintApi());
+}
+catch(err){
+    console.log(err)
+    alert('xoa khong thanh cong')
+}
+
+}
+}
+
+export const addAdminApi = (values:string) => {
+return async (dispatch1: DispatchType) => {
+  // console.log(getState())
+  try {
+    const result = await http.post('/users',values);
+    alert('them admin thanh cong');
+    dispatch1(getadmintApi());
+    history.push('/admin/user')
+  } catch (err) {
+    console.log({ err });
+  }
+};
+};
+
+export const editUserApi=(id:any)=>{
+return async (dispatch2: DispatchType) => {
+  try {
+    let result = await http.get(`/users/${id}`);
+    dispatch2(getUpdateAction(result.data.content));
+  } catch (err) {
+    console.log(err);
+  }
+};
+}
+
+
+
+export const updatUsereApi=(data: EditUser) => {
+return async (dispatch: DispatchType) => {
+  try {
+    const result = await http.put(`/users/${data.id}`, data.value);
+    // customHistory.push('/admin/management-user');
+    dispatch(addAdminApi(result.data.content));
+    alert('update admin thanh cong');
+  } catch (error) {
+    console.log(error);
+  }
+};
+};
+
+export const searchUserApi = (name: any) => {
+return async (dispatch: DispatchType) => {
+  try {
+    const result = await http.get(`/users/search/${name}`);
+    let seach:Admin[]=result.data.content;
+    // console.log(seach)
+    const action=searchUserAction(seach)
+    dispatch(action);
+    console.log(action)
+  } catch (error) {
+    console.log(error);
+  }
+};
+};

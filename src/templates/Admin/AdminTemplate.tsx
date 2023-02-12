@@ -1,13 +1,17 @@
 // tsrafce
+
 import React from 'react'
+import { Outlet } from 'react-router-dom'
+import AdminHeader from '../../components/AdminHeader/AdminHeader'
 
 type Props = {}
 
 const AdminTemplate = (props: Props) => {
   return (
-    <div>
-      
-    </div>
+    <>
+      <AdminHeader />
+      {/* <Outlet/> */}
+    </>
   )
 }
 
