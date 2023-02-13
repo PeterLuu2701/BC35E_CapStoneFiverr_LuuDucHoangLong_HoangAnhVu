@@ -4,11 +4,11 @@ import {
   DsNhomChiTietLoai,
   MenuJob,
   getCategoryApi,
+  DsChiTietLoai,
 } from "../../redux/reducers/jobReducer";
 import { useDispatch } from "react-redux";
 import { RootState } from "../../redux/configStore";
-
-
+import banner from "../../assets/img/category_banner.jpg"
 
 type Props = {
 };
@@ -19,35 +19,46 @@ const JobCategory = (props: Props) => {
       (state: RootState) => state.jobReducer
     );
 
-    console.log(arrCategoryJob);
+    console.log("arrCategoryJob: ", arrCategoryJob);
     const dispatch = useDispatch();
 
-    useEffect(() => {
-      const actionAsync: any = getCategoryApi(arrCategoryJob?.maLoaiCongviec!);
-      dispatch(actionAsync);
-    }, []);
+    // useEffect(() => {
+    //   const actionAsync: any = getCategoryApi(arrCategoryJob?.maLoaiCongviec!);
+    //   dispatch(actionAsync);
+    // }, []);
 
     
     
   return (
     <div className="category">
       <div className="category_banner">
-        <img src="./img/category_banner.jpg" alt="banner" />
+        <img src={banner} alt="banner" />
       </div>
       <div className="container category_card">
-        <div className="row">
-          <div className="col-4">
-                  <div className="card">
-                    <img
-                      className="card-img-top"
-                      src={arrCategoryJob?.hinhAnh}
-                      alt="Title"
-                    />
-                    <div className="card-body">
-                      <h4 className="card-title">{arrCategoryJob?.tenNhom}</h4>
-                    </div>
+        <div className="row row-cols-1 row-cols-md-3">
+          {arrCategoryJob?.map((category: DsNhomChiTietLoai, i: number) => {
+            return (
+              <div className="col">
+                <div className="card mb-3">
+                  <img
+                    className="card-img-top"
+                    src={category.hinhAnh}
+                    alt="Title"
+                  />
+                  <div className="card-body">
+                    <h4 className="card-title">{category.tenNhom}</h4>
+                    {category.dsChiTietLoai.map((jobTitle: DsChiTietLoai) => {
+                      return (
+                        <ul>
+                          <li>{jobTitle.tenChiTiet}</li>
+                        </ul>
+                      );
+                    })}
                   </div>
-          </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

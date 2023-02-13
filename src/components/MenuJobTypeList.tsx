@@ -3,6 +3,7 @@ import { DsChiTietLoai, DsNhomChiTietLoai, getCategoryApi, MenuJob } from "../re
 import { useState, useEffect } from "react";
 import { Box, Grid } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 type Props = {
   job: MenuJob;
@@ -11,10 +12,16 @@ type Props = {
 
 const MenuJobTypeList = (props: Props) => {
   const { job, show } = props;
+  const dispatch = useDispatch();
+
+  const handleJobClick = () => {
+    const actionAsync: any = getCategoryApi(job?.id);
+    dispatch(actionAsync)
+  };
 
   return (
     <Box position="relative" className="menu_job_type_list">
-      <NavLink to={`/category/${job?.id}`}>
+      <NavLink to={`/category/${job?.id}`} onClick={handleJobClick}>
         <Button style={{ color: "#74767e" }}>{job.tenLoaiCongViec}</Button>
       </NavLink>
 

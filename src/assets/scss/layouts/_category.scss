@@ -1,0 +1,20 @@
+.category{
+    .category_banner{
+        padding-bottom: 30px;
+    }
+
+    .category_card{
+        .card{
+            height: 450px;
+            .card-body{
+                ul{
+                    list-style-type: none;
+                    li{
+                        font-size: $fs-5;
+                    }
+                    ;
+                }
+            }
+        }
+    }
+}
