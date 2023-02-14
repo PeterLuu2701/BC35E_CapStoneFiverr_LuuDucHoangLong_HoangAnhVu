@@ -53,7 +53,7 @@ export const getadmintApi = () => {
   return async (dispatch1: DispatchType) => {
     // console.log(getState())
     try {
-      const result = await http.get('/users');
+      const result = await http.get('/api/users');
       let arradmin:Admin[]=result.data.content;
       const action = getAdminAction(arradmin);
       
@@ -68,7 +68,7 @@ export const getadmintApi = () => {
 export const deleteUseApi=(id: string)=>{
 return async(dispatch:DispatchType)=>{
   try{
-    const result=await http.delete(`/users?id=${id}`);
+    const result=await http.delete(`/api/users?id=${id}`);
     console.log(result.data.message)
     dispatch(getadmintApi());
 }
@@ -84,7 +84,7 @@ export const addAdminApi = (values:string) => {
 return async (dispatch1: DispatchType) => {
   // console.log(getState())
   try {
-    const result = await http.post('/users',values);
+    const result = await http.post('/api/users',values);
     alert('them admin thanh cong');
     dispatch1(getadmintApi());
     history.push('/admin/user')
@@ -97,7 +97,7 @@ return async (dispatch1: DispatchType) => {
 export const editUserApi=(id:any)=>{
 return async (dispatch2: DispatchType) => {
   try {
-    let result = await http.get(`/users/${id}`);
+    let result = await http.get(`/api/users/${id}`);
     dispatch2(getUpdateAction(result.data.content));
   } catch (err) {
     console.log(err);
@@ -110,7 +110,7 @@ return async (dispatch2: DispatchType) => {
 export const updatUsereApi=(data: EditUser) => {
 return async (dispatch: DispatchType) => {
   try {
-    const result = await http.put(`/users/${data.id}`, data.value);
+    const result = await http.put(`/api/users/${data.id}`, data.value);
     // customHistory.push('/admin/management-user');
     dispatch(addAdminApi(result.data.content));
     alert('update admin thanh cong');
@@ -123,7 +123,7 @@ return async (dispatch: DispatchType) => {
 export const searchUserApi = (name: any) => {
 return async (dispatch: DispatchType) => {
   try {
-    const result = await http.get(`/users/search/${name}`);
+    const result = await http.get(`/api/users/search/${name}`);
     let seach:Admin[]=result.data.content;
     // console.log(seach)
     const action=searchUserAction(seach)
