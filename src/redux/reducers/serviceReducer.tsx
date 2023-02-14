@@ -52,7 +52,7 @@ export default serviceReducer.reducer
 export const getServiceApi =()=>{
     return async (dispatch:DispatchType)=>{
         try{
-            const result = await http.get('/thue-cong-viec')
+            const result = await http.get('/api/thue-cong-viec')
             let arradmin:Service[]=result.data.content
             const action = getServiceAction(arradmin)
             dispatch(action)
@@ -68,7 +68,7 @@ export const addServiceApi = (values:Service) => {
     return async (dispatch: DispatchType) => {
       // console.log(getState())
       try {
-        const result = await http.post('/thue-cong-viec',values);
+        const result = await http.post('/api/thue-cong-viec',values);
         alert('them cong viec thanh cong');
         dispatch(getServiceApi());
       } catch (err) {
@@ -81,7 +81,7 @@ export const addServiceApi = (values:Service) => {
   export const editServiceApi=(id:any)=>{
     return async (dispatch: DispatchType) => {
       try {
-        let result = await http.get(`/thue-cong-viec/${id}`);
+        let result = await http.get(`/api/thue-cong-viec/${id}`);
         console.log(result.data.content);
         dispatch(getEditServiceAction(result.data.content));
       } catch (err) {
@@ -94,7 +94,7 @@ export const addServiceApi = (values:Service) => {
 export const updateServiceApi=(data: ServiceModel) => {
     return async (dispatch: DispatchType) => {
       try {
-        const result = await http.put(`/thue-cong-viec`, data);
+        const result = await http.put(`/api/thue-cong-viec`, data);
         // customHistory.push('/admin/management-user');
         dispatch(getServiceApi());
         console.log(result.data.content)
@@ -109,7 +109,7 @@ export const updateServiceApi=(data: ServiceModel) => {
 export const deleteServiceApi=(id: number)=>{
     return async(dispatch:DispatchType)=>{
       try{
-        const result=await http.delete(`/thue-cong-viec/${id}`);
+        const result=await http.delete(`/api/thue-cong-viec/${id}`);
         console.log(result.data.message)
         dispatch(getServiceApi());
       }
@@ -125,7 +125,7 @@ export const deleteServiceApi=(id: number)=>{
 export const searcServiceApi = (Keywork: any) => {
     return async (dispatch: DispatchType) => {
       try {
-        const result = await http.get('/thue-cong-viec/phan-trang-tim-kiem?pageIndex=1&pageSize=5');
+        const result = await http.get('/api/thue-cong-viec/phan-trang-tim-kiem?pageIndex=1&pageSize=5');
         let seach:Service[]=result.data.content;
         // console.log(seach)
         const action=searchServiceAction(seach)
