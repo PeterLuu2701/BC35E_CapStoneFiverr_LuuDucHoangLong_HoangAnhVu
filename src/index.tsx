@@ -24,6 +24,11 @@ import ResponsiveItem from './HOC/ResponsiveItem';
 import AdminTemplate from './templates/Admin/AdminTemplate';
 import User from './pages/AdminPages/User/User';
 import Service from './pages/AdminPages/Service/Service';
+import AddUser from './pages/AdminPages/User/AddUser';
+import UpdateUser from './pages/AdminPages/User/UpdateUser';
+import UpdateService from './pages/AdminPages/Service/UpdateService';
+import AddService from './pages/AdminPages/Service/AddService';
+import Work from './pages/AdminPages/work/Work';
 
 
 
@@ -58,7 +63,12 @@ root.render(
         <Route path='/admin' element={<ResponsiveItem Component={AdminTemplate} />}>
           <Route index element={<ResponsiveItem Component={User} />} />
           <Route path='/admin/user' element={<ResponsiveItem Component={User} />} />
+          <Route path='/admin/user/adduser' element={<ResponsiveItem Component={AddUser}/>}>{""}</Route>
+          <Route path='/admin/user/edit/:id' element={<ResponsiveItem Component={UpdateUser}/>}>{""}</Route>
           <Route path='/admin/service' element={<ResponsiveItem Component={Service} />} />
+          <Route path='/admin/service/addservice' element={<ResponsiveItem Component={AddService}/>}>{""}</Route>
+          <Route path='/admin/service/edit/:id' element={<ResponsiveItem Component={UpdateService}/>}>{""}</Route>
+          <Route path='/admin/work' element={<ResponsiveItem Component={Work} />} />
         </Route>
 
       </Routes>
