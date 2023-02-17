@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom'
 import { DispatchType, RootState } from '../../../redux/configStore'
 import { deleteWorkApi, editWorkApi, getWorkApi, searchWorkApi } from '../../../redux/reducers/workReducer'
 import {SearchOutlined,EditOutlined,DeleteOutlined} from '@ant-design/icons'
-import { history } from '../../..'
+import { history } from '../../../index'
 type Props = {}
 interface DataType {
   key: React.Key;
@@ -50,7 +50,7 @@ const colums: ColumnsType<DataType> = [
     title: '',
     dataIndex: '',
     render:(text,object:any)=>{return <Fragment>
-      <NavLink key={1} className=' mx-2 fs-3' to={`/api/admin/work/edit/${object.id}`} style={{color:'blue'}} onClick={() => {
+      <NavLink key={1} className=' mx-2 fs-3' to={`/admin/work/edit/${object.id}`} style={{color:'blue'}} onClick={() => {
               dispatch(editWorkApi(object.id))}}><EditOutlined></EditOutlined></NavLink>
       <Button key={2} className='fs-3' onClick={() => {
               dispatch(deleteWorkApi(object.id))

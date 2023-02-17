@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import adminReducer from './reducers/adminReducer';
 import jobReducer from './reducers/jobReducer';
 import serviceReducer from './reducers/serviceReducer';
+import typeWorkReducer from './reducers/typeWorkReducer';
 import userReducer from './reducers/userReducer';
 import workReducer from './reducers/workReducer';
 
@@ -11,7 +12,8 @@ export const store = configureStore({
     userReducer: userReducer,
     adminReducer: adminReducer,
     serviceReducer:serviceReducer,
-    workReducer:workReducer
+    workReducer:workReducer,
+    typeWorkReducer: typeWorkReducer
   },
 });
 

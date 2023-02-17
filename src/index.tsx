@@ -29,6 +29,12 @@ import UpdateUser from './pages/AdminPages/User/UpdateUser';
 import UpdateService from './pages/AdminPages/Service/UpdateService';
 import AddService from './pages/AdminPages/Service/AddService';
 import Work from './pages/AdminPages/work/Work';
+import AddWork from './pages/AdminPages/work/AddWork';
+import UpdateWork from './pages/AdminPages/work/UpdateWork';
+import TypeWork from './pages/AdminPages/TypeWork.tsx/TypeWork';
+import AddTypeWork from './pages/AdminPages/TypeWork.tsx/AddTypeWork';
+import UpdateTypeWork from './pages/AdminPages/TypeWork.tsx/UpdateTypeWork';
+
 
 
 
@@ -69,6 +75,11 @@ root.render(
           <Route path='/admin/service/addservice' element={<ResponsiveItem Component={AddService}/>}>{""}</Route>
           <Route path='/admin/service/edit/:id' element={<ResponsiveItem Component={UpdateService}/>}>{""}</Route>
           <Route path='/admin/work' element={<ResponsiveItem Component={Work} />} />
+          <Route path='/admin/work/addwork' element={<ResponsiveItem Component={AddWork}/>}>{""}</Route>
+          <Route path='/admin/work/edit/:id' element={<ResponsiveItem Component={UpdateWork}/>}>{""}</Route>
+          <Route path='/admin/typeWork' element={<ResponsiveItem Component={TypeWork} />} />
+          <Route path='/admin/typeWork/addtypeWork' element={<ResponsiveItem Component={AddTypeWork}/>}>{""}</Route>
+          <Route path='/admin/typework/edit/:id' element={<ResponsiveItem Component={UpdateTypeWork}/>}>{""}</Route>
         </Route>
 
       </Routes>
