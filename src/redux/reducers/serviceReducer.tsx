@@ -57,7 +57,7 @@ export const getServiceApi =()=>{
             const action = getServiceAction(arradmin)
             dispatch(action)
         } catch(err){
-            console.log(err);
+            console.log({err});
             
         }
     }

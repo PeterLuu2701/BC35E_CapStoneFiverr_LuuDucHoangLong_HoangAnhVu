@@ -1,41 +1,42 @@
-import { Form, Input, Radio } from 'antd';
+import { Form, Input, InputNumber, Radio } from 'antd';
 import { useFormik } from 'formik';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { DispatchType, RootState } from '../../../redux/configStore';
-import { updateServiceApi } from '../../../redux/reducers/serviceReducer';
+import { editServiceApi, updateServiceApi } from '../../../redux/reducers/typeWorkReducer';
 
 type Props = {}
 type SizeType = Parameters<typeof Form>[0]['size'];
-const UpdateWork = (props: Props) => {
+
+
+const UpdateTypeWork = (props: Props) => {
+
   const dispatch: DispatchType = useDispatch();
   const params = useParams();
-  const {editWork} = useSelector((state: RootState) => state.workReducer);
+  const {editTypeWork} = useSelector((state: RootState) => state.typeWorkReducer);
   const [componentSize, setComponentSize] = useState<SizeType | 'default'>('default');
   const onFormLayoutChange = ({ size }: { size: SizeType }) => {
   setComponentSize(size);
   }
-  useEffect(()=>{
-      // let{id}=props.match.params;
-      // dispatch(editService(id))
-  })
+  useEffect(() => {
+    const { id } = params;
+    dispatch(editServiceApi('id'));
+  }, []);
+
 
   const formik=useFormik({
     enableReinitialize:true,
     initialValues:{
-      id:editWork.id,
-      tenCongViec:editWork.tenCongViec,
-      giaTien:editWork.giaTien,
-      moTa:editWork.moTa,
-      // gender:editWork.gender,
-      // role:editWork.role,
-      ngayThue:editWork.ngayThue,
-      saoCongViec:editWork.saoCongViec
+      id:editTypeWork.id,
+      tenNhom:editTypeWork.tenNhom,
+      maLoaiCongviec:editTypeWork.maLoaiCongviec,
       },
       onSubmit: (values:any) => {
-          console.log(values);
+        // const id = params.id as string;
+        // const data={id,value:{...values}}
+        console.log(values);
           dispatch(updateServiceApi(values))
       }
   },
@@ -44,6 +45,8 @@ const handleChangeDatePicker=(value:any)=>{
   let ngayThue=moment(value);
   formik.setFieldValue('ngayThue',ngayThue)
 }
+
+
 
   return (
     <Form
@@ -62,22 +65,17 @@ const handleChangeDatePicker=(value:any)=>{
         <Radio.Button value="large">Large</Radio.Button>
       </Radio.Group>
     </Form.Item>
-    <Form.Item label="ID"rules={[{ required: true, message: 'Please input your giaTien number!' },]}>
-      <Input name='id' onChange={formik.handleChange} value={editWork.id}  />
+    <Form.Item label="ID"rules={[{ required: true, message: 'Please input your maLoaiCongviec number!' },]}>
+      <Input name='id' onChange={formik.handleChange} value={editTypeWork.id}  />
       
     </Form.Item>
-    <Form.Item label="tenCongViec"rules={[{ required: true, message: 'Please input your tenCongViec number!' },]}>
-      <Input name='tenCongViec'onChange={formik.handleChange} value={formik.values.tenCongViec} />
+    <Form.Item label="tenNhom"rules={[{ required: true, message: 'Please input your tenNhom number!' },]}>
+      <InputNumber name='tenNhom'onChange={formik.handleChange} value={formik.values.tenNhom} />
     </Form.Item>
-    <Form.Item label="giaTien" rules={[{ required: true, message: 'Please input your giaTien number!' },]}>
-      <Input name='giaTien' onChange={formik.handleChange}value={formik.values.giaTien} />
+    <Form.Item label="maLoaiCongviec" rules={[{ required: true, message: 'Please input your maLoaiCongviec number!' },]}>
+      <InputNumber name='maLoaiCongviec' onChange={formik.handleChange}value={formik.values.maLoaiCongviec} />
     </Form.Item>
-    <Form.Item label="moTa" rules={[{ required: true, message: 'Please input your moTa number!' },]}>
-      <Input name='moTa' onChange={formik.handleChange}value={formik.values.moTa} />
-    </Form.Item>
-    <Form.Item label="saoCongViec" rules={[{ required: true, message: 'Please input your saoCongViec number!' },]}>
-      <Input name='saoCongViec' onChange={formik.handleChange}value={formik.values.saoCongViec} />
-    </Form.Item>
+    
     {/* <Form.Item label="ngayThue">
       <DatePicker name='ngayThue' format={'DD/MM/YYYY'} onChange={handleChangeDatePicker} value={moment(formik.values.ngayThue)}/>
     </Form.Item> */}
@@ -88,4 +86,4 @@ const handleChangeDatePicker=(value:any)=>{
   )
 }
 
-export default UpdateWork
+export default UpdateTypeWork
