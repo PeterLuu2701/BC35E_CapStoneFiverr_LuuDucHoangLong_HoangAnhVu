@@ -22,7 +22,7 @@ const Work = (props: Props) => {
   useEffect(()=>{
     const actionApi = getWorkApi();
     dispatch(actionApi)
-  })
+  },[])
 const colums: ColumnsType<DataType> = [
   {
     title: 'id',
@@ -82,7 +82,7 @@ const data: DataType[] = arrWork;
   return (
     <div className="card-body  container">
       <Button className='mt-5'onClick={()=>{
-        history.push('/admin/service/addwork')
+        history.push('/admin/typeWork/addtypeWork')
         }}>Them cong viec</Button>
       <Search
         placeholder="input search text"

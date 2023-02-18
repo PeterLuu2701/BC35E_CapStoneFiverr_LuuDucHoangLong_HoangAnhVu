@@ -20,7 +20,7 @@ const UpdateWork = (props: Props) => {
   useEffect(()=>{
       // let{id}=props.match.params;
       // dispatch(editService(id))
-  })
+  },[])
 
   const formik=useFormik({
     enableReinitialize:true,

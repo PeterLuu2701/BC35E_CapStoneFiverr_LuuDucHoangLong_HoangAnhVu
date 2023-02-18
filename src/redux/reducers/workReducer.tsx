@@ -57,7 +57,7 @@ export const getWorkApi = ()=>{
 export const addWorkApi = (values:string) =>{
     return async (dispatch: DispatchType)=>{
         try {
-            const result = await http.post('/api/cong-viec')
+            const result = await http.post('/api/cong-viec',values)
             alert('Thêm công việc thành công')
             dispatch(getWorkApi())
         } catch (err) {
@@ -71,7 +71,7 @@ export const addWorkApi = (values:string) =>{
 export const editWorkApi = (id:string) =>{
     return async (dispatch:DispatchType) => {
         try {
-            let result = await http.get(`/api/cong-viec${id}`)
+            let result = await http.get(`/api/cong-viec/${id}`)
             console.log(result.data.content);
             dispatch(getEditWorkAction(result.data.content))
 
@@ -86,7 +86,7 @@ export const editWorkApi = (id:string) =>{
 export const deleteWorkApi = (id:number) =>{
     return async (dispatch:DispatchType) => {
         try {
-            let result = await http.get(`/api/cong-viec${id}`)
+            let result = await http.get(`/api/cong-viec/${id}`)
             console.log(result.data.message);
             dispatch(getWorkApi())
         } catch (err) {

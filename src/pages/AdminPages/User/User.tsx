@@ -1,13 +1,13 @@
-import React,{Fragment, useEffect} from 'react'
-import {NavLink} from 'react-router-dom'
-import { Table,Input,Button } from 'antd';
-import {SearchOutlined,EditOutlined,DeleteOutlined} from '@ant-design/icons'
-import type { ColumnsType, TableProps } from 'antd/es/table';
-import { useSelector,useDispatch } from 'react-redux';
+import { Button, Input } from 'antd';
+import Table, { ColumnsType, TableProps } from 'antd/es/table';
+import React, { Fragment, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import {SearchOutlined,EditOutlined,DeleteOutlined} from '@ant-design/icons';
 import { DispatchType, RootState } from '../../../redux/configStore';
-import {getadmintApi,deleteUseApi,searchUserApi, editUserApi } from '../../../redux/reducers/adminReducer'
-import { history } from '../../../index';
 import { Content } from 'antd/lib/layout/layout';
+import { deleteUseApi, editUserApi, getadmintApi, searchUserApi } from '../../../redux/reducers/adminReducer';
+import { history } from '../../../index';
 
 type Props = {}
 interface DataType {
@@ -17,7 +17,8 @@ interface DataType {
   math: number;
   english: number;
 }
-export default function User({}: Props) {
+
+const User = (props: Props) => {
   const {arrAdmin}=useSelector((state: RootState) => state.adminReducer);
   const dispatch: DispatchType = useDispatch();
 
@@ -108,4 +109,5 @@ export default function User({}: Props) {
       </Content>
                 
   )
-}
+      }
+export default User

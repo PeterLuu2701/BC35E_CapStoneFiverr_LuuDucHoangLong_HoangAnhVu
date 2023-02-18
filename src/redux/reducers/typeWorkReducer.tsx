@@ -40,7 +40,7 @@ export const getTypeWorkApi = () => {
     return async (dispatch: DispatchType) => {
       // console.log(getState())
       try {
-        const result = await http.get('/chi-tiet-loai-cong-viec');
+        const result = await http.get('/api/chi-tiet-loai-cong-viec');
         let arrTypeWork:TypeWork[]=result.data.content;
         const action = getTypeWorkAction(arrTypeWork);
         
@@ -55,7 +55,7 @@ export const getTypeWorkApi = () => {
     return async (dispatch: DispatchType) => {
       // console.log(getState())
       try {
-        const result = await http.post('/chi-tiet-loai-cong-viec',values);
+        const result = await http.post('/api/chi-tiet-loai-cong-viec',values);
         alert('them cong viec thanh cong');
         dispatch(getTypeWorkApi());
       } catch (err) {
@@ -66,7 +66,7 @@ export const getTypeWorkApi = () => {
   export const deletTypeWorkApi=(id: number)=>{
     return async(dispatch:DispatchType)=>{
       try{
-        const result=await http.delete(`/chi-tiet-loai-cong-viec/${id}`);
+        const result=await http.delete(`/api/chi-tiet-loai-cong-viec/${id}`);
         console.log(result.data.message)
         dispatch(getTypeWorkApi());
       }
@@ -80,7 +80,7 @@ export const getTypeWorkApi = () => {
   export const editServiceApi=(id:string)=>{
     return async (dispatch: DispatchType) => {
       try {
-        let result = await http.get(`/chi-tiet-loai-cong-viec/${id}`);
+        let result = await http.get(`/api/chi-tiet-loai-cong-viec/${id}`);
         console.log(result.data.content);
         dispatch(getEditTypeWorkAction(result.data.content));
       } catch (err) {
@@ -91,7 +91,7 @@ export const getTypeWorkApi = () => {
   export const updateServiceApi=(data: any) => {
     return async (dispatch: DispatchType) => {
       try {
-        const result = await http.post('/chi-tiet-loai-cong-viec', data);
+        const result = await http.post('/api/chi-tiet-loai-cong-viec', data);
         // customHistory.push('/admin/management-user');
         dispatch(getTypeWorkApi());
         console.log(result.data.content)
@@ -104,7 +104,7 @@ export const getTypeWorkApi = () => {
   export const searchTypeWorkApi = (Keywork: any) => {
     return async (dispatch: DispatchType) => {
       try {
-        const result = await http.get(`/chi-tiet-loai-cong-viec/phan-trang-tim-kiem?keyword=${Keywork}`);
+        const result = await http.get(`/api/chi-tiet-loai-cong-viec/phan-trang-tim-kiem?keyword=${Keywork}`);
         let seach:TypeWork[]=result.data.content;
         // console.log(seach)
         const action=searchTypeWorkAction(seach)

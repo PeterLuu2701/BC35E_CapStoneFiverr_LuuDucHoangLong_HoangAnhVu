@@ -95,10 +95,10 @@ return async (dispatch1: DispatchType) => {
 };
 
 export const editUserApi=(id:any)=>{
-return async (dispatch2: DispatchType) => {
+return async (dispatch: DispatchType) => {
   try {
     let result = await http.get(`/api/users/${id}`);
-    dispatch2(getUpdateAction(result.data.content));
+    dispatch(getUpdateAction(result.data.content));
   } catch (err) {
     console.log(err);
   }
