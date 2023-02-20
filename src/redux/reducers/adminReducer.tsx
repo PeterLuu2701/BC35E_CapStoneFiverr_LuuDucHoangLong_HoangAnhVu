@@ -94,7 +94,7 @@ return async (dispatch1: DispatchType) => {
 };
 };
 
-export const editUserApi=(id:string)=>{
+export const editUserApi=(id:any)=>{
   return async (dispatch2: DispatchType) => {
     try {
       let result = await http.get(`/api/users/${id}`);
