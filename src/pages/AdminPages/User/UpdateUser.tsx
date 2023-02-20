@@ -1,6 +1,6 @@
 import { DatePicker, Form, Input, Radio } from 'antd';
 import { useFormik } from 'formik';
-import moment from 'moment';
+import moment, { isMoment } from 'moment';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -21,7 +21,7 @@ const UpdateUser = (props: Props) => {
   }
   useEffect(() => {
     const { id } = params;
-    dispatch(editUserApi(id));
+    dispatch(editUserApi(''));
   }, []);
 
   
@@ -78,9 +78,9 @@ return (
       <Input name='phone' onChange={formik.handleChange}value={formik.values.phone} />
     </Form.Item>
     
-    <Form.Item label="Birthday">
+    {/* <Form.Item label="Birthday">
       <DatePicker name='birthday' format={'DD/MM/YYYY'} onChange={handleChangeDatePicker} value={(formik.values.birthday)}/>
-    </Form.Item>
+    </Form.Item> */}
     <Form.Item label="Gender">
         <Radio.Group name='gender'onChange={formik.handleChange}value={formik.values.gender}  >
           <Radio value={true}> Male </Radio>

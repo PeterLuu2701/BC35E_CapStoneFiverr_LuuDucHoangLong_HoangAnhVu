@@ -55,7 +55,7 @@ const TypeWork = (props: Props) => {
       title: '',
       dataIndex: '',
       render:(text,object:any)=>{return <Fragment>
-        <NavLink key={1} className=' mx-2 fs-3' to={`/admin/service/edit/${object.id}`} style={{color:'blue'}} onClick={() => {
+        <NavLink key={1} className=' mx-2 fs-3' to={`/admin/typework/edit/${object.id}`} style={{color:'blue'}} onClick={() => {
                 dispatch(updateServiceApi(object.id))}}><EditOutlined></EditOutlined></NavLink>
         <Button key={2} className='fs-3' onClick={() => {
                 dispatch(deletTypeWorkApi(object.id))
@@ -88,7 +88,7 @@ const TypeWork = (props: Props) => {
   return (
     <div className="card-body  container">
         <Button className='mt-5'onClick={()=>{
-          history.push('/admin/service/addservice')
+          history.push('/admin/typeWork/addtypeWork')
         }}>Them cong viec</Button>
         <Search
           placeholder="input search text"
