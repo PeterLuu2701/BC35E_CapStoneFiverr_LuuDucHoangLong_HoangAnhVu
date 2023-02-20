@@ -82,7 +82,7 @@ const data: DataType[] = arrWork;
   return (
     <div className="card-body  container">
       <Button className='mt-5'onClick={()=>{
-        history.push('/admin/typeWork/addtypeWork')
+        history.push('/admin/work/addwork')
         }}>Them cong viec</Button>
       <Search
         placeholder="input search text"

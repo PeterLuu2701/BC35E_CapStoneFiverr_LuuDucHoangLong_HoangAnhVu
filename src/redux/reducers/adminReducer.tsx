@@ -94,30 +94,27 @@ return async (dispatch1: DispatchType) => {
 };
 };
 
-export const editUserApi=(id:any)=>{
-return async (dispatch: DispatchType) => {
-  try {
-    let result = await http.get(`/api/users/${id}`);
-    dispatch(getUpdateAction(result.data.content));
-  } catch (err) {
-    console.log(err);
-  }
-};
+export const editUserApi=(id:string)=>{
+  return async (dispatch2: DispatchType) => {
+    try {
+      let result = await http.get(`/api/users/${id}`);
+      dispatch2(getUpdateAction(result.data.content));
+    } catch (err) {
+      console.log(err);
+    }
+  };
 }
-
-
-
 export const updatUsereApi=(data: EditUser) => {
-return async (dispatch: DispatchType) => {
-  try {
-    const result = await http.put(`/api/users/${data.id}`, data.value);
-    // customHistory.push('/admin/management-user');
-    dispatch(addAdminApi(result.data.content));
-    alert('update admin thanh cong');
-  } catch (error) {
-    console.log(error);
-  }
-};
+  return async (dispatch: DispatchType) => {
+    try {
+      const result = await http.put(`/api/users/${data.id}`, data.value);
+      // customHistory.push('/admin/management-user');
+      dispatch(addAdminApi(result.data.content));
+      alert('update admin thanh cong');
+    } catch (error) {
+      console.log(error);
+    }
+  };
 };
 
 export const searchUserApi = (name: any) => {

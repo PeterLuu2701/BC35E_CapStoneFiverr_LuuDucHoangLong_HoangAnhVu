@@ -77,9 +77,9 @@ const UpdateService = (props: Props) => {
         <InputNumber name='maNguoiThue' onChange={formik.handleChange} value={formik.values.maNguoiThue} />
       </Form.Item>
 
-      <Form.Item label="ngayThue">
+      {/* <Form.Item label="ngayThue">
         <DatePicker name='ngayThue' format={'DD/MM/YYYY'} onChange={handleChangeDatePicker} value={(formik.values.ngayThue)}/>
-      </Form.Item>
+      </Form.Item> */}
       <Form.Item label=":">
         <button type='submit' className='btn btn-success'>Update Service</button>
       </Form.Item>

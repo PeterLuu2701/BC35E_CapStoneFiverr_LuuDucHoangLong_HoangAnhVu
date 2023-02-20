@@ -1,4 +1,4 @@
-import { Form, Input, InputNumber, Radio } from 'antd';
+import { DatePicker, Form, Input, InputNumber, Radio } from 'antd';
 import { useFormik } from 'formik';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react'
@@ -80,7 +80,7 @@ const handleChangeDatePicker=(value:any)=>{
       <DatePicker name='ngayThue' format={'DD/MM/YYYY'} onChange={handleChangeDatePicker} value={moment(formik.values.ngayThue)}/>
     </Form.Item> */}
     <Form.Item label=":">
-      <button type='submit'className='btn btn-success'>Update Service</button>
+      <button type='submit'className='btn btn-success'>Update TypeWork</button>
     </Form.Item>
   </Form>
   )
