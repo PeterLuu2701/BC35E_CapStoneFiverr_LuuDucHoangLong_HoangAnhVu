@@ -21,7 +21,7 @@ const UpdateUser = (props: Props) => {
   }
   useEffect(() => {
     const { id } = params;
-    dispatch(editUserApi(''));
+    dispatch(editUserApi(id));
   }, []);
 
   
